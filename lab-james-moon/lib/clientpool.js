@@ -9,19 +9,20 @@ const ClientPool = module.exports = function() {
     socket.id = socket.remotePort;
     socket.userName = 'guest-' + socket.id;
     socket.on('data', (data) => {
-      socket.write(socket.userName + ': ' + data.toString());
+      // socket.write(socket.userName + ': ' + data.toString());
       socket.emit('broadcast', data);
       if (data.toString() === 'END\r\n') {
-        console.log('user ' + socket.userName + ' has disconnected');
-        socket.emit('close');
+        socket.emit('end', socket);
         socket.end();
       }
     });
     socket.on('error', (err) => {
       console.log('error received: ' + err);
     });
-    socket.on('close', () => {
-      this.pool[];
+    socket.on('end', (socket) => {
+      console.log('user ' + socket.userName + ' has disconnected');
+      delete this.pool[this.socket];
+      debugger;
     });
     socket.on('broadcast', (data) => {
       for(var key in this.pool) {
