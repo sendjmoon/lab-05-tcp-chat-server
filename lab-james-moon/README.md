@@ -1,0 +1,2 @@
+# TCP Chat Server
+The provided module creates a chat server over TCP using `Node.js`. It uses `server.js` to setup a server that registers a unique ID and username to each client based on their port. It then stores that information in an object using a separate module from `lib/clientpool.js`. When a client sends a message, that same message is broadcasted to all clients who are connected to the server. Upon a client disconnecting from the server, their information is removed from the object's client pool.
