@@ -25,7 +25,11 @@
  * The ClientPool should have a property name 'ee' that is a Node.js EventEmitter
  * The ClientPool should have a property named `pool` that is of type _object_, for storing references to connected sockets
 * When sockets connect to the server they should be added to an instance of ClientPool by emitting a `register` event
+<<<<<<< HEAD
 * When a socket emits the `end` event the socket should be removed from the ClientPool
+=======
+* When a socket emits the `close` event the socket should be removed from the ClientPool
+>>>>>>> 8dd78928426da1aabdf96ec26302d6f9193f6b82
 * When sockets are registered with the ClientPool they should be given a randomly generated `id` that will be used as their key on the ClientPool's `pool` property,
  * **e.g.** `user_230948023948`
 * When sockets are registered with the ClientPool they should be given a randomly generated `nickname` that should be used to identify who typed a message in the chat
