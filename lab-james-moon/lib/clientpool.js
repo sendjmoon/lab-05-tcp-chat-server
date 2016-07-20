@@ -24,7 +24,6 @@ const ClientPool = module.exports = function() {
     socket.on('close', () => {
       console.log(socket.userName + ' has disconnected');
       delete this.pool[socket.id];
-      console.log(this.pool);
       socket.end();
     });
 
